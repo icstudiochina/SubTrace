@@ -95,7 +95,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate, services, userProfile
                     service.status === 'expiring' ? 'bg-amber-100 text-amber-700' :
                       'bg-green-100 text-green-700'
                   }`}>
-                  {service.status === 'expired' ? '已過期' : service.status === 'expiring' ? '即將到期' : '使用中'}
+                  {service.status === 'expired' ? '服務中斷' : service.status === 'expiring' ? '即將到期' : '服務正常'}
                 </span>
               </div>
               <p className={`text-sm mt-0.5 truncate ${service.status === 'expired' ? 'text-red-600' :
