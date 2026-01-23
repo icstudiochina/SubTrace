@@ -17,9 +17,9 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate, services, userProfile
 
   const stats = [
     { label: '服務總數', value: services.length, icon: 'inventory_2', color: 'blue' },
-    { label: '使用中', value: activeCount, icon: 'check_circle', color: 'green' },
+    { label: '服務正常', value: activeCount, icon: 'check_circle', color: 'green' },
     { label: '即將到期', value: expiringCount, icon: 'timer', color: 'amber', badge: '需注意' },
-    { label: '已過期', value: expiredCount, icon: 'error', color: 'red', badge: '需續訂' },
+    { label: '服務中斷', value: expiredCount, icon: 'error', color: 'red', badge: '需續訂' },
   ];
 
   return (
