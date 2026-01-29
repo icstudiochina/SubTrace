@@ -24,6 +24,25 @@ export interface ServiceRecord {
  * Convert database record to frontend Service type
  */
 function toService(record: ServiceRecord): Service {
+    // Dynamically calculate days remaining
+    const now = new Date();
+    // Reset time part to ensure clean day calculation
+    now.setHours(0, 0, 0, 0);
+    
+    const expiryDate = new Date(record.expiry_date);
+    expiryDate.setHours(0, 0, 0, 0);
+    
+    const diffTime = expiryDate.getTime() - now.getTime();
+    const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    // Determine status dynamically based on calculated days
+    let status: ServiceStatus = 'active';
+    if (daysRemaining < 0) {
+        status = 'expired';
+    } else if (daysRemaining <= 7) {
+        status = 'expiring';
+    }
+
     return {
         id: record.id,
         name: record.name,
@@ -33,9 +52,9 @@ function toService(record: ServiceRecord): Service {
         billingCycle: record.billing_cycle,
         startDate: record.start_date,
         expiryDate: record.expiry_date,
-        status: record.status,
+        status: status, // Use dynamically calculated status
         icon: record.icon,
-        daysRemaining: record.days_remaining,
+        daysRemaining: daysRemaining, // Use dynamically calculated days
         notes: record.notes || undefined,
         renewalLink: record.renewal_link || undefined,
     };
