@@ -278,7 +278,7 @@ const Settings: React.FC<SettingsProps> = ({ onBack, onLogout, userProfile, onPr
         </section>
 
         <div className="pt-4 text-center">
-          <p className="text-[11px] text-gray-400 dark:text-gray-600 font-medium tracking-wide">應用程式版本 2.4.0 (Build 102)</p>
+          <p className="text-[11px] text-gray-400 dark:text-gray-600 font-medium tracking-wide">應用程式版本 1.0.1</p>
         </div>
 
         <div className="h-6"></div>
